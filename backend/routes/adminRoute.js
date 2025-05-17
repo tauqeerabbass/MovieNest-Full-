@@ -5,10 +5,9 @@ import { verifyAdmin } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-// GET all users
 router.get('/users', verifyToken, verifyAdmin, async (req, res) => {
   try {
-    const users = await User.find({}, '-password'); // exclude password
+    const users = await User.find({}, '-password');
     res.json(users);
   } catch (err) {
     res.status(500).json({ msg: "Failed to fetch users" });
@@ -30,7 +29,6 @@ router.delete('/users/:id', verifyToken, verifyAdmin, async (req, res) => {
 router.get('/stats', verifyToken, verifyAdmin, async (req, res) => {
   try {
     const usersCount = await User.countDocuments();
-    // similarly, add Movie and Comment counts if you want
     res.json({ usersCount });
   } catch (err) {
     res.status(500).json({ msg: "Failed to fetch stats" });

@@ -38,7 +38,6 @@ router.post("/like", verifyToken, async (req, res) => {
   }
 });
 
-// ✅ Remove movie from liked list
 // DELETE /api/user/like/:movieId
 
 router.delete("/like/:movieId", verifyToken, async (req, res) => {
@@ -79,7 +78,6 @@ router.post("/wishlist", verifyToken, async (req, res) => {
   }
 });
 
-// ✅ Remove movie from wishlist
 // DELETE /api/user/watchlist/:movieId
 
 router.delete("/wishlist/:movieId", verifyToken, async (req, res) => {

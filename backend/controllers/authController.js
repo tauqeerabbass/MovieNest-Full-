@@ -16,14 +16,12 @@ export const register = async (req, res) => {
     const user = new User({ name, email, password: hashed });
     await user.save();
 
-    // Generate JWT token (just like in login)
     const token = jwt.sign(
       { id: user._id, name: user.name, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: '7d' }
     );
 
-    // Return token and user info
     res.status(201).json({
       token,
       user: {
@@ -49,9 +47,8 @@ export const login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
 
-    // ⬇️ Add role to JWT payload
     const token = jwt.sign(
-  { id: user._id, name: user.name, role: user.role }, // <-- Include role
+  { id: user._id, name: user.name, role: user.role },
   process.env.JWT_SECRET,
   { expiresIn: '7d' }
 );
@@ -61,7 +58,7 @@ res.json({
   user: {
     id: user._id,
     name: user.name,
-    role: user.role // <-- Include role in response
+    role: user.role
   }
 });
 

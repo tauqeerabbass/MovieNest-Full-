@@ -18,9 +18,9 @@ const MovieDetails = () => {
   const navigate = useNavigate();
 
   const handleSignOut = () => {
-    dispatch(removeUser()); // clear user from Redux
-    localStorage.removeItem("token"); // clear token from localStorage
-    navigate("/"); // redirect to login page
+    dispatch(removeUser());
+    localStorage.removeItem("token");
+    navigate("/");
   };
 
   const fetchMovieDetails = async () => {
@@ -71,7 +71,7 @@ const MovieDetails = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ movieId, text: comment }), // ✅ Confirm this is defined
+        body: JSON.stringify({ movieId, text: comment }),
       });
 
       console.log("Response status:", res.status);

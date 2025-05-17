@@ -7,7 +7,6 @@ import { BGIMG_URL } from "../utils/constans";
 const MovieSuggestion = () => {
   const { movieResults } = useSelector((store) => store.gpt);
 
-  // Ensure movieResults is a valid array
   if (!Array.isArray(movieResults)) {
     console.error("❌ movieResults is not an array", movieResults);
     return null;

@@ -5,8 +5,8 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: { type: String, default: "user" },
-  likedMovies: [{ type: String }],  // change from `likes` to `likedMovies`
-  wishlist: [{ type: String }]      // change from `watchlist` to `wishlist`
+  likedMovies: [{ type: String }],
+  wishlist: [{ type: String }]
 });
 
 export default mongoose.model("User", userSchema);

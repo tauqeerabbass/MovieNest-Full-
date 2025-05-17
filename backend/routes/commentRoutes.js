@@ -1,19 +1,3 @@
-// import express from 'express';
-// import { verifyToken } from '../middlewares/authMiddleware.js';
-// import { addComment, getComments } from '../controllers/commentController.js';
-
-// const router = express.Router();
-
-// // Public: fetch all comments for a movie
-// router.get('/:movieId', getComments);
-
-// // Protected: add a comment
-// router.post('/:movieId', verifyToken, addComment);
-
-// export default router;
-// This code defines routes for adding and fetching comments on movies.
-// The `addComment` route is protected, meaning only authenticated users can add comments. The `getComments` route is public and allows anyone to fetch comments for a specific movie.
-
 import express from "express";
 import Comment from "../models/Comment.js";
 import { verifyToken } from "../middlewares/authMiddleware.js";
@@ -37,7 +21,7 @@ router.post("/", verifyToken, async (req, res) => {
     const newComment = new Comment({
       movieId,
       userId: req.user.id,
-      username: req.user.name || "Anonymous", // fallback
+      username: req.user.name || "Anonymous",
       text,
     });
 

@@ -31,7 +31,7 @@ export const getComments = async (req, res) => {
     const comments = await Comment
       .find({ movieId })
       .sort({ createdAt: -1 })
-      .populate('userId', 'name');  // include commenter’s name
+      .populate('userId', 'name');
 
     res.json(comments);
   } catch (err) {
